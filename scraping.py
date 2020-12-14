@@ -17,17 +17,17 @@ def scrape_all():
    # Initiate headless driver for deployment
    browser = Browser("chrome", executable_path="chromedriver", headless=True)
    news_title, news_paragraph = mars_news(browser)
-# Run all scraping functions and store results in dictionary
-data = {
+    # Run all scraping functions and store results in dictionary
+    data = {
       "news_title": news_title,
       "news_paragraph": news_paragraph,
       "featured_image": featured_image(browser),
       "facts": mars_facts(),
       "last_modified": dt.datetime.now()
-}
-   # Stop webdriver and return data
-   browser.quit()
-   return data
+    }
+    # Stop webdriver and return data
+    browser.quit()
+    return data
 
 if __name__ == "__main__":
     # If running as script, print scraped data
@@ -49,18 +49,22 @@ browser.is_element_present_by_css("ul.item_list li.slide", wait_time=1)
 
 html = browser.html
 news_soup = soup(html, 'html.parser')
-slide_elem = news_soup.select_one('ul.item_list li.slide')
-slide_elem.find("div", class_='content_title')
+try:
+    slide_elem = news_soup.select_one('ul.item_list li.slide')
+    slide_elem.find("div", class_='content_title')
 
 
 # Use the parent element to find the first `a` tag and save it as `news_title`
-news_title = slide_elem.find("div", class_='content_title').get_text()
-news_title
-
+    news_title = slide_elem.find("div", class_='content_title').get_text()
+    #news_title
+    news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
+except AttributeError:
+    return None, None
+return news_title, news_p
 
 # Use the parent element to find the paragraph text
-news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
-news_p
+#news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
+#news_p
 
 ###10.5.2 adding mars_news
 def mars_news(browser):
