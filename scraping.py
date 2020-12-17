@@ -23,11 +23,25 @@ def scrape_all():
       "news_paragraph": news_paragraph,
       "featured_image": featured_image(browser),
       "facts": mars_facts(),
-      "last_modified": dt.datetime.now()
+      "last_modified": dt.datetime.now(),
+      "Title": title, "Image_link": image_link
     }
     # Stop webdriver and return data
     browser.quit()
     return data
+
+for i in range(len(links)):
+    hemisphere = {}
+    browser.find_by_css("a.product-item h3")[i].click()
+    browser.links.find_by_text("Sample").first
+    image_link = browser.links.find_by_text("Sample").first["href"]
+    
+    browser.find_by_css("h2.title").text
+    title = browser.find_by_css("h2.title").text
+    print(image_link)
+    print(title)
+    hemisphere_image_urls.append({"Title": title, "Image_link": image_link})
+    browser.back()
 
 if __name__ == "__main__":
     # If running as script, print scraped data
