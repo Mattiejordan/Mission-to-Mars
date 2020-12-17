@@ -1,6 +1,8 @@
 # Mission-to-Mars
 
-The below photos are scraped from NASA's website. See the four hemisperes of Mars. 
+The four hemisperes of Mars seen here can be scraped from NASA's own website. 
+https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars
+
 
 ![hemispheres/cerberus_enhanced](hemispheres/cerberus_enhanced.jpg)
 
