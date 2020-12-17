@@ -1,5 +1,7 @@
 # Mission-to-Mars
 
+The below photos are scraped from NASA's website. See the four hemisperes of Mars. 
+
 ![hemispheres/cerberus_enhanced](hemispheres/cerberus_enhanced.jpg)
 
 Cereberus
